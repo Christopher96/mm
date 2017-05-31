@@ -72,11 +72,15 @@ article {
 header {
   nav {
     font-size: $font-small;
-
     li {
-      margin-right: 20px;
       display: inline-block;
     }
+  }
+}
+
+.language-btns {
+  .btn {
+    margin-left: 7px;
   }
 }
 
@@ -142,7 +146,7 @@ header {
 .gallery {
   font-size: 0;
   flex-flow: row wrap;
-  display: flex;  
+  display: flex;
 }
 
 .gallery a {
@@ -162,5 +166,3 @@ header {
   .gallery { padding: 0; }
 
 }
-
-

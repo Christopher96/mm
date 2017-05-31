@@ -39,7 +39,7 @@ gulp.task('styles', () => {
 
 gulp.task('serve', ['styles', 'scripts'], () => {
   browserSync({
-    proxy: "http://localhost:8888/mm/"
+    proxy: "http://localhost/~syphez/mm/"
   });
 
   gulp.watch([

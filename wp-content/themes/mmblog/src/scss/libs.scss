@@ -3,7 +3,6 @@ $icon-font-path: '../fonts/';
 @import "imports/variables";
 @import "node_modules/font-awesome/scss/font-awesome";
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "node_modules/flag-icon-css/sass/flag-icon";
 
 @media (min-width: $screen-md-min) {
   header {
@@ -49,7 +48,7 @@ $icon-font-path: '../fonts/';
   .logo {
     padding: 5vh;
   }
-  
+
   .jumbotron {
     .title {
       font-size: $font-large;

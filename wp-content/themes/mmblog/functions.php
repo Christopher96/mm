@@ -2,13 +2,24 @@
 
 add_theme_support( 'custom-logo' );
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'nav-menus' );
 
 function theme_prefix_the_custom_logo() {
-	
+
 	if ( function_exists( 'the_custom_logo' ) ) {
 		the_custom_logo();
 	}
- 
+
+}
+
+add_action( "init", "register_my_menus" );
+
+function register_my_menus() {
+	register_nav_menus(
+			array(
+				"primary" => __( "primary" )
+			)
+	);
 }
 
 function arphabet_widgets_init() {
@@ -60,6 +71,25 @@ function enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
 
+function get_language_buttons(){
+	$menu = wp_get_nav_menu_items("langs");
 
+	$buttons = "";
+	foreach( $menu as $item ){
+		if( !empty($item->lang) ){
+
+			$classes = "btn btn-default";
+			if( in_array("current-lang", $item->classes) ){
+				$classes .= " active";
+			}
+
+			$buttons .= "<a href='" .$item->url. "' class='" .$classes. "'>";
+			$buttons .= $item->title;
+			$buttons .= "</a>";
+		}
+	}
+
+	return $buttons;
+}
 
 ?>

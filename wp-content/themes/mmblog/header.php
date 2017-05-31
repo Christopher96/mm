@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
   <head>
-  	<title><?php wp_title( '|', true, 'right' ); ?></title>
+  	<title>MM<?php wp_title( '|', true, 'left' ); ?></title>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
@@ -32,7 +32,7 @@
             <hr/>
             <nav class="navbar navbar-default">
               <div class="navbar-brand navbar-right language-btns">
-                <button class="btn btn-default active" type="button">
+                <!-- <button class="btn btn-default active" type="button">
                   <span class="flag-icon flag-icon-se"></span>
                 </button>
                 <button class="btn btn-default" type="button">
@@ -40,7 +40,8 @@
                 </button>
                 <button class="btn btn-default" type="button">
                   <span class="flag-icon flag-icon-fr"></span>
-                </button>
+                </button> -->
+                <?= get_language_buttons() ?>
               </div>
               <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu" aria-expanded="false">
@@ -48,7 +49,7 @@
                   <i class="fa fa-bars"></i>
               </button>
               </div>
-              <?php 
+              <?php
                   wp_nav_menu( array(
                       'menu'              => 'primary',
                       'theme_location'    => 'primary',
