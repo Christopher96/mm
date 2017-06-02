@@ -29,7 +29,7 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', 'root');
 
 /** MySQL-server */
-define('DB_HOST', '192.168.0.14');
+define('DB_HOST', 'macbook');
 
 /** Teckenkodning för tabellerna i databasen. */
 define('DB_CHARSET', 'utf8');

@@ -1,38 +1,20 @@
-<?php
-/**
- * The template for displaying pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages and that
- * other "pages" on your WordPress site will use a different template.
- *
- * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
- */
-
-get_header(); ?>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
-		<?php
-		// Start the loop.
-		while ( have_posts() ) : the_post();
-
-			// Include the page content template.
-			get_template_part( 'content', 'page' );
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		// End the loop.
-		endwhile;
-		?>
-
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
-
+<?php get_header(); ?>
+<section>
+  <div class="row">
+    <?php // look to see if we've disabled sidebar in a custom field, if not show it
+     $disableSidebar = get_post_meta($post->ID, 'DisableSidebar', $single = true) === 'true';
+    ?>
+    <div class="border-between">
+      <div class="<?= ($disableSidebar) ? "" : "col-md-9"; ?> col-left">
+        <h1 class="title largest"><?= $post->post_title ?></h1>
+        <?= get_thumbnail("large") ?>
+        <?= apply_filters("the_content", $post->post_content) ?>
+      </div>
+      <div class="hidden-md hidden-lg">
+        <hr>
+      </div>
+      <?php if (!$disableSidebar): get_sidebar(); endif; ?>
+    </div>
+  </div>
+</section>
 <?php get_footer(); ?>

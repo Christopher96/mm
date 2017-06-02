@@ -16,10 +16,10 @@
   <div class="container">
     <header>
       <div class="row">
-          <div class="col-md-4 logo">
+          <div class="col-md-3 logo">
               <?php theme_prefix_the_custom_logo()?>
           </div>
-          <div class="col-md-8 menu">
+          <div class="col-md-9 menu">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Sök efter...">
               <span class="input-group-btn">
@@ -32,15 +32,6 @@
             <hr/>
             <nav class="navbar navbar-default">
               <div class="navbar-brand navbar-right language-btns">
-                <!-- <button class="btn btn-default active" type="button">
-                  <span class="flag-icon flag-icon-se"></span>
-                </button>
-                <button class="btn btn-default" type="button">
-                  <span class="flag-icon flag-icon-gb"></span>
-                </button>
-                <button class="btn btn-default" type="button">
-                  <span class="flag-icon flag-icon-fr"></span>
-                </button> -->
                 <?= get_language_buttons() ?>
               </div>
               <div class="navbar-header">
@@ -50,7 +41,7 @@
               </button>
               </div>
               <?php
-                  wp_nav_menu( array(
+                  wp_nav_menu(array(
                       'menu'              => 'primary',
                       'theme_location'    => 'primary',
                       'depth'             => 2,
@@ -59,8 +50,8 @@
                       'container_id'      => 'navbar-menu',
                       'menu_class'        => 'nav navbar-nav navbar-left',
                       'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-                      'walker'            => new WP_Bootstrap_Navwalker())
-                  );
+                      'walker'            => new WP_Bootstrap_Navwalker()
+                  ));
                 ?>
             </nav>
           </div>

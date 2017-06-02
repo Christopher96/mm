@@ -1,4 +1,21 @@
-@import "imports/variables";
+$icon-font-path: '../fonts/';
+
+$font-small: 12pt;
+$font-medium: 14pt;
+$font-large: 22pt;
+$font-largest: 30pt;
+
+$bg-color: white;
+$first-color: #F55D7D;
+$second-color: #AD425A;
+$faint-color: #eeeeee;
+
+$brand-primary: $first-color;
+
+@import "flexbin/flexbin.scss";
+@import "lightbox2/dist/css/lightbox.min";
+@import "font-awesome/scss/font-awesome";
+@import "bootstrap-sass/assets/stylesheets/bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 
 body {
@@ -7,14 +24,94 @@ body {
   font-size: $font-small;
 }
 
+p {
+  font-size: $font-small;
+  margin: 20px 0;
+}
+
+
+label {
+  color: $first-color;
+}
+
+.marked,
+cite {
+  color: $first-color;
+}
+
+a {
+  color: $first-color;
+  &:hover {
+    color: $second-color;
+  }
+}
+
+h1,h2,h3,h4,h5,h6,ul,li {
+  margin: 0;
+  padding: 0;
+}
+
+article {
+  img {
+    width: 100%;
+    height: auto;
+  }
+  margin-bottom: 30px;
+  .date {
+    color: $second-color;
+  }
+}
+
+.sidebar {
+  article {
+    .title {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.flexbin > * {
+  height: auto;
+  > img {
+    height: auto;
+  }
+}
+
+.border-between {
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.border-between > [class*='col-']:before {
+   background: #e3e3e3;
+   bottom: 0;
+   content: " ";
+   left: 0;
+   position: absolute;
+   width: 1px;
+   top: 0;
+}
+
+.border-between > [class*='col-']:first-child:before {
+   display: none;
+}
+
 .cancel {
   width: 100%;
+}
+
+.large {
+  font-size: $font-large;
+}
+.largest {
+  font-size: $font-largest;
 }
 
 .title {
   margin-bottom: 20px;
   font-family: 'Lobster', cursive;
-  font-size: $font-large;
   color: $first-color;
 }
 
@@ -44,40 +141,6 @@ body {
   }
 }
 
-.marked,
-cite {
-  color: $first-color;
-}
-
-a {
-  color: $first-color;
-}
-
-a:hover {
-  color: $second-color;
-}
-
-
-h1,h2,h3,h4,h5,h6,ul,li {
-  margin: 0;
-  padding: 0;
-}
-
-article {
-  img {
-    width: 100%;
-  }
-}
-
-header {
-  nav {
-    font-size: $font-small;
-    li {
-      display: inline-block;
-    }
-  }
-}
-
 .language-btns {
   .btn {
     margin-left: 7px;
@@ -87,25 +150,6 @@ header {
 .custom-logo {
   width: 100%;
   height: auto;
-}
-
-.contact {
-  form {
-    button {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      font-size: $font-small;
-
-      .loading {
-        display: none;
-      }
-    }
-
-    .alert {
-      display: none;
-    }
-  }
 }
 
 .contact-info {
@@ -143,26 +187,128 @@ header {
   }
 }
 
-.gallery {
-  font-size: 0;
-  flex-flow: row wrap;
-  display: flex;
-}
-
-.gallery a {
-  flex: auto;
-  width: 200px;
-  padding: .5vw;
-}
-
-.gallery a img {
-  width: 100%;
-  height: auto;
-}
-
-
-@media screen and (max-width: 400px) {
+@media screen and (max-width: $screen-md-min) {
   .gallery a { margin: 0; }
   .gallery { padding: 0; }
+}
 
+.wpcf7-form {
+  @extend .form-horizontal;
+  [type="submit"] {
+    width: 100%;
+    padding: 20px;
+    font-size: $font-small;
+    height:100%;
+
+    .loading {
+      display: none;
+    }
+  }
+}
+
+.wpcf7-form-control {
+  @extend .form-control;
+}
+
+.wpcf7-response-output {
+  @extend .col-md-offset-3;
+  @extend .col-md-9;
+}
+
+.form-group .form-group {
+  margin: 0;
+}
+
+
+.lb-details {
+  margin: 20px 0;
+}
+
+.lb-number {
+  margin-top: 10px;
+}
+
+.lb-caption {
+  .title {
+    font-size: $font-large;
+    margin-right: 20px;
+  }
+
+  p {
+    margin: 0;
+    display: inline;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  header {
+    margin-bottom: 20px;
+  }
+
+  .menu {
+    padding-top: 40px;
+  }
+
+  .main {
+    border-right: 1px solid;
+    border-color: $faint-color;
+    padding-right: 50px;
+  }
+
+  .navbar-collapse {
+    padding: 0;
+  }
+
+  .jumbotron {
+    .title {
+      font-size: $font-largest;
+    }
+    p {
+      font-size: $font-medium;
+    }
+  }
+
+}
+
+@media (max-width: $screen-md-min) {
+
+  article {
+    .title {
+      margin-top: 20px;
+    }
+  }
+
+  .contact-info {
+    margin-top: 20px;
+  }
+
+  .sidebar {
+    margin-bottom: 50px;
+  }
+
+  .logo {
+    padding: 5vh;
+  }
+
+  .jumbotron {
+    .title {
+      font-size: $font-large;
+    }
+    p {
+      font-size: $font-small;
+    }
+  }
+
+
+  .lb-caption {
+    .title {
+      font-size: $font-medium;
+      margin: 0;
+    }
+
+    p {
+      margin: 10px 0;
+      display: block;
+    }
+  }
 }

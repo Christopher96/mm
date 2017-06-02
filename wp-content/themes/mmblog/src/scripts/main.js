@@ -1,25 +1,17 @@
 $(document).ready(function(){
-	$("#contact-form button[type='submit']").click(function(e){
-		e.preventDefault();
-
-		var form = $(this).parent();
-		var submit = $(this);
+	$(".wpcf7-form").submit(function(){
+		var form = $(this)
+		var submit = $(this).find("[type=submit]");
 
 		submit.find(".loading").css("display", "inline-block");
 		submit.find(".message").css("display", "none");
 		submit.prop("disabled", true);
 
-		setTimeout(function(){
-			submit.find(".message").css("display", "inline-block");
+		var response = $(this).find(".wpcf7-response-output");
+		response.unbind().bind("DOMSubtreeModified",function(){
+		  submit.find(".message").css("display", "inline-block");
 			submit.find(".loading").css("display", "none");
 			submit.prop("disabled", false);
-
-			form.find(".alert").show();
-		}, 2000);
-	});
-
-	$(".language-btns button").click(function(){
-		$(this).parent().find("button.active").removeClass("active");
-		$(this).addClass("active");
+		});
 	});
 });

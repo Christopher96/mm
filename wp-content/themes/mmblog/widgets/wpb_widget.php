@@ -32,13 +32,16 @@ public function widget( $args, $instance ) {
 
   if ( $posts ) : foreach ( $posts as $post ) : setup_postdata($post); ?>
     <article>
-      <div class="row">
-        <span><?= the_time( get_option( 'date_format' ) ) ?></span>
-        <a href="<?php the_permalink() ?>" title="Permanent Link to <?php the_title_attribute(); ?>">
-          <p class="title txt-medium"><?= the_title(); ?></p>
-        </a>
-        <?= the_excerpt(); ?>
-      </div>
+      <a href="<?php the_permalink() ?>" title="Permanent Link to <?php the_title_attribute(); ?>">
+        <h4 class="title large">
+          <?= the_title(); ?>
+        </h4>
+      </a>
+      <?= get_thumbnail("thumbnail"); ?>
+      <?= the_excerpt(); ?>
+      <span class="date">
+        <?= the_time( get_option( 'date_format' ) ) ?>
+      </span>
     </article>
   <?php endforeach; endif;
   echo $args['after_widget'];
